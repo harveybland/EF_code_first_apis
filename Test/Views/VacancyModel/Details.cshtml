@@ -1,0 +1,82 @@
+﻿@model Test.Models.VacancyModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VacancyModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InternalTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InternalTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaryType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaryType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
