@@ -13,4 +13,5 @@ namespace Test.Models
         public string County { get; set; }
         public string Country { get; set; }
     }
+
 }

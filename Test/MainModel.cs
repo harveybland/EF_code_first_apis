@@ -9,11 +9,12 @@ namespace Test
             : base("name=MainModel")
         {
         }
-         
+
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Vacancy> Vacancies { get; set; }
 
         public virtual DbSet<EmployeeAddress> EmployeeAddresses { get; set; }
+        public virtual DbSet<VacancyEmployee> VacancyEmployees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {}

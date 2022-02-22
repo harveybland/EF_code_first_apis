@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -19,6 +20,7 @@ namespace Test.Controllers
             return db.EmployeeAddresses;
         }
 
+
         // GET: api/EmployeeAddress/5
         [ResponseType(typeof(EmployeeAddress))]
         public async Task<IHttpActionResult> GetEmployeeAddress(int id)
@@ -31,6 +33,7 @@ namespace Test.Controllers
 
             return Ok(employeeAddress);
         }
+
 
         // PUT: api/EmployeeAddress/5
         [ResponseType(typeof(void))]

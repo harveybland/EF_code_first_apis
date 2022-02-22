@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
 using Test.Models;
 
 namespace Test.Controllers
@@ -20,15 +19,35 @@ namespace Test.Controllers
 
 
         // GET: api/Vacancy/5
-        public async Task<IHttpActionResult> GetVacancy(int id)
+        public async Task<IHttpActionResult> GetVacancy(int Id)
         {
-            Vacancy vacancyModel = await db.Vacancies.FindAsync(id);
-            if (vacancyModel == null)
-            {
-                return NotFound();
-            }
+            var x = await db.Vacancies
+                .Where(xx => xx.Id == Id).FirstOrDefaultAsync();
 
-            return Ok(vacancyModel);
+            var vacancy = new VacancyDto
+            {
+                Id = x.Id,
+                JobTitle = x.JobTitle,
+                InternalTitle = x.InternalTitle,
+                ContractType = x.ContractType,
+                Location = x.Location,
+                Salary = x.Salary,
+                SalaryType = x.SalaryType,
+                BusinessArea = x.BusinessArea,
+                Employee = new Employee
+                {
+                    Id = x.Employee.Id,
+                    FirstName = x.Employee.FirstName,
+                    LastName = x.Employee.LastName,
+                    Gender = x.Employee.Gender
+                },
+                VacancyPets = x.VacancyPets.Select(vp => new VacancyPet {
+                    Title = vp.Title,
+                }).ToList()
+
+            };
+
+            return Ok(vacancy);
         }
 
         // POST: api/Vacancy
@@ -68,9 +87,9 @@ namespace Test.Controllers
             }
 
         // Add an employee to a vacancy
-        // PUT: api/Vacancy/5
+        // PUT: api/Vacancy
         [HttpPut]
-        [Route("api/AddEmployee/{id}")]
+        [Route("api/AddEmployee")]
         public async Task<IHttpActionResult> PutVacancyEmployee(int id, Vacancy Model)
         {
             if (Model == null)
